@@ -12,7 +12,7 @@ function [proj_data, angles]=projection(no_of_proj, no_of_points)
 %          -0.08 -0.605  0.046 0.023  0    0.01
 %           0    -0.605  0.023 0.023  0    0.01
 %           0.06 -0.605  0.046 0.023  90   0.01];
-phantom = [0      0       0.92    0.69     90        2.0
+phantom = [0      0       0.92    0.69     90        1.0
       0     -0.0184  0.874   0.6624   90       -0.9
       0.22   0       0.31    0.11     72       -0.1
      -0.22   0       0.41    0.16    108       -0.1
@@ -29,15 +29,15 @@ N_ellipses=size(phantom,1);
 proj_data=zeros(no_of_points,no_of_proj);
 
 for i=1:N_ellipses
-    A=N*phantom(i,3);
-    B=N*phantom(i,4);
+    A=2*N*phantom(i,3)/3;
+    B=2*N*phantom(i,4)/3;
     x1=phantom(i,1);
     y1=phantom(i,2);
     alpha=phantom(i,5)*pi/180;
     rho=phantom(i,6);
     
     index=1;
-    s=sqrt((N*x1)^2+(N*y1)^2);
+    s=sqrt((2*N*x1/3)^2+(2*N*y1/3)^2);
     
     gamma=atan2(y1,x1);
     
@@ -54,7 +54,7 @@ for i=1:N_ellipses
         
         P=2*rho*A*B*sqrt(atheta-t.^2)/atheta;
         Pfinal=P.*t1;
-        disp(k);
+%         disp(k);
 %         if(k > 0)
 %         Pfinal = [zeros(1,ceil(k)),Pfinal];
 %         Pfinal = Pfinal(1,1:no_of_points); 

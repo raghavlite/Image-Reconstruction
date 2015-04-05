@@ -37,7 +37,7 @@ for i=1:N_ellipses
     rho=phantom(i,6);
     
     index=1;
-    s=sqrt(x1^2+y1^2);
+    s=sqrt((N*x1)^2+(N*y1)^2);
     
     gamma=atan2(y1,x1);
     
@@ -45,12 +45,27 @@ for i=1:N_ellipses
         theta=theta1-alpha;
         atheta=(A*cos(theta))^2+(B*sin(theta))^2;
         t2(index)=s*cos(gamma-theta1); 
-        t=(1:no_of_points)-N+t2(index);
+        k=s*cos(gamma-theta1);
+        t=(1:no_of_points)-N-k;
+        
+        
         tmax=floor(sqrt(atheta));
         t1=abs(t)<tmax;
         
         P=2*rho*A*B*sqrt(atheta-t.^2)/atheta;
         Pfinal=P.*t1;
+        disp(k);
+%         if(k > 0)
+%         Pfinal = [zeros(1,ceil(k)),Pfinal];
+%         Pfinal = Pfinal(1,1:no_of_points); 
+%         disp('inside +');
+%         else
+%             lsr=ceil(abs(k));
+%         Pfinal = [Pfinal,zeros(1,lsr)];
+%         Pfinal = Pfinal(1,lsr+1:lsr+no_of_points);
+%         disp('inside -');
+%         end
+%         
         proj_data(:,index)=proj_data(:,index)+Pfinal';
         index=index+1;   
     end

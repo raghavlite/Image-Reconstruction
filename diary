@@ -1,0 +1,30 @@
+P = phantom(256);
+imshow(P)
+% generates a phantom size 256
+% imshow showes images with each pixl data
+theta1 = 0:10:170;
+[R1,~] = radon(P,theta1);
+num_angles_R1 = size(R1,2)
+
+num_angles_R1 =
+
+    18
+
+theta3 = 0:2:178;
+[R3,xp] = radon(P,theta3);
+num_angles_R3 = size(R3,2)
+
+num_angles_R3 =
+
+    90
+
+theta2 = 0:5:175;
+[R2,~] = radon(P,theta2);
+num_angles_R2 = size(R2,2)
+
+num_angles_R2 =
+
+    36
+
+% projections taken with different del theta and image reconstructed
+%radon essensially calculates intensity along the angle projections

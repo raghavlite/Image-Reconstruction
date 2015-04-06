@@ -1,0 +1,71 @@
+
+
+TON = 0.0000066;
+
+TF=0.00001;
+
+TS=0.000000005;
+
+t  = 0:TS:(2*TF-TS);
+
+kl = zeros(1,round((2*TF)/TS));
+
+for i = 1:round((2*TF)/TS)
+
+if (i-floor(t(i)/TF)*(TF/TS) <= TON/TS)
+kl(i)=1;
+% disp(i);
+else
+kl(i)=0;
+% disp(i);
+end  
+
+
+end
+
+
+
+A=58500000;
+B=61500000;
+
+
+A1 =sin(2*pi*A*t);
+
+B1=cos(2*pi*B*(t.*t));
+
+C1=cos
+
+D1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+plot(t,kl);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

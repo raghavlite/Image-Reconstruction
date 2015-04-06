@@ -39,7 +39,7 @@ LE = zeros(l,1);
 
 for i= 31:l-30
     
-    if(rms(X(i-30:i+30,1))<.6*R)
+    if(rms(X(i-30:i+30,1))<R)
     
         
         
@@ -55,7 +55,7 @@ end
 
 for i = 1:30
 
-if(rms(X(i:i+40))<.6*R)    
+if(rms(X(i:i+40))<R)    
 else
     LE(i)=1;
 end
@@ -67,7 +67,7 @@ end
 
 for i = l-29:l
 
-if(rms(X(i:i-40))<.6*R)    
+if(rms(X(i:i-40))<R)    
 else
     LE(i)=1;
 end

@@ -1,0 +1,24 @@
+
+
+TON = 0.000066;
+
+TF=0.00001;
+
+TS=0.00000005;
+
+t  = 0:TS:(2*TF-TS);
+
+
+
+for i = 1:10000
+
+if (t(i)-floor(t(i)/TF)<TON)
+kl(i)=0;
+disp(i);
+else
+kl(i)=1;
+disp(i);
+end  
+
+
+end
